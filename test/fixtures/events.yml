@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  location: MyString
+  date: 2019-10-15
+  time: 2019-10-15 11:29:14
+  host_id: 1
+
+two:
+  location: MyString
+  date: 2019-10-15
+  time: 2019-10-15 11:29:14
+  host_id: 1
