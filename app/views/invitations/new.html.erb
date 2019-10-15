@@ -1,0 +1,25 @@
+<%= form_for @invitation, url: {action: "create"} do |form| %>
+  <% if @invitation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@invitation.errors.count, "error") %> prohibited this @invitation from being saved:</h2>
+
+      <ul>
+      <% @invitation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.fields_for :guests do |guests_form| %>
+  <div class="field">
+    <%= guests_form.label :guest_email %>
+    <%= guests_form.text_field :guest_email, id: :guest_email %>
+  </div>
+  <% end %>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

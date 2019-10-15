@@ -17,7 +17,16 @@
 
 <p>
   <strong>Host:</strong>
-  <%= @host.email %>
+  <%= @event.host.email %>
+</p>
+
+<%= link_to 'Invite Guest', new_event_invitation_path(@event) %>
+
+<p>
+  <strong>Guests:</strong><br>
+  <% @event.guests.each do |guest| %>
+  <%= guest.email %><br>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
