@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :events do
     resources :invitations, only: [:new, :create, :index]
   end
-  root 'users#index'
+  root 'events#index'
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   get 'signup', to: 'users#new', as: 'signup'

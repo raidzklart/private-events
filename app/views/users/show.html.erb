@@ -4,7 +4,17 @@
   <strong>Email:</strong>
   <%= @user.email %>
 </p>
+<p>
+  <strong>Events you are hosting:</strong>
+</p>
 <% @user.events.each do |event| %>
+  <p> <%= event.location %>  <%= link_to 'Show', event_path(event.id) %></p>
+<% end %>
+
+<p>
+  <strong>Events you are attending:</strong>
+</p>
+<% @attending.each do |event| %>
   <p> <%= event.location %>  <%= link_to 'Show', event_path(event.id) %></p>
 <% end %>
 

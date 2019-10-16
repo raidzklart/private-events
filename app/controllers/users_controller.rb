@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @attending = Event.joins(:invitations).where('invitations.guest_id' => params[:id])
   end
 
   # GET /users/new
