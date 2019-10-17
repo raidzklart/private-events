@@ -18,5 +18,17 @@
   <p> <%= event.location %>  <%= link_to 'Show', event_path(event.id) %></p>
 <% end %>
 
+<p>
+  <strong>Previous Events:</strong>
+</p>
+<% @past_event.each do |event| %>
+  <p> <%= event.location %>  <%= link_to 'Show', event_path(event.id) %></p>
+<% end %>
+<p>
+  <strong>Future Events:</strong>
+</p>
+<% @future_event.each do |event| %>
+  <p> <%= event.location %>  <%= link_to 'Show', event_path(event.id) %></p>
+<% end %>
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

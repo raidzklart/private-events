@@ -11,6 +11,15 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @attending = Event.joins(:invitations).where('invitations.guest_id' => params[:id])
+    @past_event = []
+    @future_event = []
+    @attending.map do |e| 
+      @past_event << e if e.date.past?
+    end
+
+    @attending.map do |e| 
+      @future_event << e if e.date.future?
+    end
   end
 
   # GET /users/new
