@@ -1,8 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Events</h1>
+<div class="container">
+  <div class="row">
+    <%= link_to 'Add A New Event', new_event_path, :class => "btn btn-outline-warning ml-auto" %>
+  </div>
+</div>
 
-<table>
+<% if @future.length < 1 %>
+<div class="container">
+  <div class="row">
+    <h1>There are no upcoming events</h1>
+  </div>
+  <div class="row">
+    <%= link_to 'Click To Add A New Event', new_event_path, :class => "btn btn-warning btn-lg mx-auto" %>
+  </div>
+</div>
+
+<% else %>
+<h1>Upcoming Events</h1>
+
+<div class="table-responsive">
+<table class="table table-striped table-sm">
   <thead>
     <tr>
       <th>Location</th>
@@ -14,7 +32,7 @@
   </thead>
 
   <tbody>
-    <% @events.each do |event| %>
+    <% @future.each do |event| %>
       <tr>
         <td><%= event.location %></td>
         <td><%= event.date %></td>
@@ -28,10 +46,19 @@
   </tbody>
   
 </table>
+</div>
+<% end %>
 
+<% if @past.length < 1 %>
+<div class="container">
+  <div class="row">
+    <h1>There are no upcoming events</h1>
+  </div>
+</div>
+<% else %>
 <h1>Past Events</h1>
-
-<table>
+<div class="table-responsive">
+<table class="table table-striped table-sm">
   <thead>
     <tr>
       <th>Location</th>
@@ -43,7 +70,7 @@
   </thead>
 
   <tbody>
-    <% @events.past.each do |event| %>
+    <% @past.each do |event| %>
       <tr>
         <td><%= event.location %></td>
         <td><%= event.date %></td>
@@ -57,36 +84,5 @@
   </tbody>
   
 </table>
-
-<h1>Future Events</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Location</th>
-      <th>Date</th>
-      <th>Time</th>
-      <th>Host</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @events.future.each do |event| %>
-      <tr>
-        <td><%= event.location %></td>
-        <td><%= event.date %></td>
-        <td><%= event.time %></td>
-        <td><%= event.host.email %></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-  </table>
-
-<br>
-
-<%= link_to 'New Event', new_event_path %>
-<%= link_to 'Home', users_path %>
+</div>
+<% end %>
