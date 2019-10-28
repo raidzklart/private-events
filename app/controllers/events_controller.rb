@@ -6,7 +6,6 @@ class EventsController < ApplicationController
   def index
     @future = Event.future.all
     @past = Event.past.all
-
   end
 
   # GET /events/1
